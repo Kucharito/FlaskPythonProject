@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     expenses = db.relationship('Expense', backref='user', lazy=True)
 
 @login_manager.user_loader
-def log_user(user_id):
+def load_user(user_id):
     return User.query.get(int(user_id))
 
 class Expenses(db.Model):

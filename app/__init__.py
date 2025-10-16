@@ -2,15 +2,19 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import CSRFProtect
+from dotenv import load_dotenv
 import os
+
+
 
 db = SQLAlchemy()
 login_manager = LoginManager()
 csrf = CSRFProtect()
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
+    load_dotenv()
 
-    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret-key-change-me')
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-key')
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///app.db')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -20,6 +24,8 @@ def create_app():
 
     login_manager.login_view = 'auth.login'
 
+
+    from . import models
 
     from .auth import  auth_bp
     from .expenses import expenses_bp
