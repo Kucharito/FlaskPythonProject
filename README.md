@@ -70,3 +70,38 @@ python main.py
 
 5. Open your browser:
 http://127.0.0.1:5000
+
+
+## 🔒 Authentication
+
+The project integrates **Flask-Login** for user session management.  
+The `User` model and `user_loader` function are already implemented, and authentication blueprints are prepared (`auth.py`).
+
+### Next steps include:
+- [ ] Creating registration and login forms  
+- [ ] Password hashing using `werkzeug.security`  
+- [ ] Restricting access to certain routes (e.g., `/expenses`)
+
+---
+
+## 🧩 Planned Features
+
+- [ ] User registration & login pages  
+- [ ] Dashboard for expenses overview  
+- [ ] Add / edit / delete expense entries  
+- [ ] Category-based filtering  
+- [ ] Monthly statistics (using Chart.js or Plotly)  
+- [ ] Export data to CSV  
+- [ ] Responsive Bootstrap 5 UI  
+
+---
+
+## 🧑‍💻 Development Notes
+
+- The project uses the **App Factory Pattern**, which improves scalability.  
+- **Blueprints** (`auth`, `expenses`) allow modular structure and cleaner code organization.  
+- **Templates** follow the **Jinja2 inheritance model** – `base.html` serves as a common layout for all pages.  
+
+
+## 🧑‍💻 Author
+Created by Adam Kuchár
