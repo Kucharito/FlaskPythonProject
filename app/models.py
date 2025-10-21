@@ -1,4 +1,6 @@
 from flask_login import UserMixin
+from wtforms.fields.datetime import DateField
+from datetime import date
 
 from app import db, login_manager
 
@@ -24,6 +26,6 @@ class Expense(db.Model):
     amount = db.Column(db.Float, nullable=False)
     category = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(255))
-    date = db.Column(db.Date, nullable=False)
+    date = db.Column(db.Date, nullable=False)  # ✅ SQLAlchemy column
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
+

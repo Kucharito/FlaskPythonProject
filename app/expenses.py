@@ -1,3 +1,5 @@
+from flask import request
+
 from flask import Blueprint, render_template, flash, redirect, url_for
 from flask_login import login_required, current_user
 
@@ -17,6 +19,10 @@ def list_expenses():
 @login_required
 def add_expenses():
     form = ExpenseForm()
+    print("DEBUG | Is form submitted?", form.is_submitted())
+    print("DEBUG | Is form validated?", form.validate_on_submit())
+    print("DEBUG | Errors:", form.errors)
+
     if form.validate_on_submit():
         new_expense = Expense(
             amount=form.amount.data,
@@ -27,6 +33,11 @@ def add_expenses():
         )
         db.session.add(new_expense)
         db.session.commit()
+        print("DEBUG | Uložil som expense")
         flash('Expense added successfully.', 'success')
         return redirect(url_for('expenses.list_expenses'))
+    print("Raw request form data:", request.form)
+    print("Form date field data:", form.date.data)
+
     return render_template('expense_form.html', form=form)
+

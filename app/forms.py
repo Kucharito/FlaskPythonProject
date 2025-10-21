@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
+from wtforms.fields.datetime import DateField
 from wtforms.fields.simple import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, EqualTo, Length, Email
-
+from datetime import date
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -19,10 +20,8 @@ class RegisterForm(FlaskForm):
 
 
 class ExpenseForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
     amount = StringField('Amount', validators=[DataRequired()])
     category = StringField('Category', validators=[DataRequired()])
     description = StringField('Description')
-    date = StringField('Date', validators=[DataRequired()])
-    note = StringField('Note')
+    date = DateField('Date', format='%Y-%m-%d', validators=[DataRequired()], default=date.today)
     submit = SubmitField('Add Expense')
