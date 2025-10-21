@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Expenses Dashboard{% endblock %}
+
+{% block content %}
+
+<h2>Expenses Dashboard</h2>
+
+{% if expenses %}
+    <ul>
+        {% for expense in expenses %}
+            <li>
+                {{ expense.category }} - ${{ expense.amount }} on {{ expense.date }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No expenses yet. Add to list</p>
+{% endif %}
+
+<a href="{{ url_for('expenses.add_expenses') }}">Add New Expense</a>
+
+{% endblock %}

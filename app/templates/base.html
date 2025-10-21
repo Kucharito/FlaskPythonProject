@@ -15,7 +15,17 @@
         <a href="   {{ url_for('auth.login') }}   ">Login</a>
         <a href="   {{ url_for('auth.register') }}   ">Register</a>
         <a href="   {{ url_for('expenses.list_expenses') }}   ">Dashboard</a>
+        <a href="   {{ url_for('auth.logout') }}">Logout</a>
     </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
 </header>
 
 <main>
