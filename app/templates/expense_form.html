@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Add Expense{% endblock %}
+{% block title %}Add Expense or Edit expense{% endblock %}
 
 {% block content %}
-<h2>Add New Expense</h2>
+<h2>Add New Expense or Edit expense </h2>
 
 <form method="POST">
     {{ form.hidden_tag() }}
@@ -27,7 +27,7 @@
 
 
     <div>
-        {{ form.submit() }}
+        {{ form.submit(value="Update Expense" if edit_mode else "Add Expense") }}
     </div>
 </form>
 
