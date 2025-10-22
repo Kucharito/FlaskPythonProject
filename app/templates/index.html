@@ -1,6 +1,55 @@
 {% extends "base.html" %}
-{% block title %}Domov | Expense Tracker{% endblock %}
+{% block title %}Home | Expense Tracker{% endblock %}
 {% block content %}
-  <h1>Vitaj v Expense Trackeri</h1>
-  <p>Toto je kostra aplikácie. V ďalšom kroku pridáme autentifikáciu a formuláre.</p>
+
+<section class="text-center py-8">
+  <h2 class="text-4xl font-bold text-gray-800 mb-4">Take Control of Your Expenses</h2>
+  <p class="text-gray-600 max-w-xl mx-auto mb-6">
+    Track your daily expenses easily and efficiently with our Expense Tracker.
+    Stay on top of your finances and reach your goals with confidence!
+  </p>
+  {% if not current_user.is_authenticated %}
+  <div class="flex gap-4 justify-center">
+    <a href="{{ url_for('auth.register') }}"
+       class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold">
+      Sign Up
+    </a>
+    <a href="{{ url_for('auth.login') }}"
+       class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold">
+      Log In
+    </a>
+  </div>
+  {% else %}
+  <a href="{{ url_for('expenses.list_expenses') }}"
+     class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold">
+    Go to Dashboard
+  </a>
+  {% endif %}
+</section>
+
+<section class="bg-white shadow-lg rounded-lg max-w-4xl mx-auto p-8 mb-16">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+    <div>
+      <h3 class="text-2xl font-bold text-blue-600 mb-2">Track Your Spending</h3>
+      <p class="text-gray-600">Easily log and categorize your daily expenses.</p>
+    </div>
+    <div>
+      <h3 class="text-2xl font-bold text-blue-600 mb-2">Analyze Trends</h3>
+      <p class="text-gray-600">Get insights into your spending habits and find ways to save.</p>
+    </div>
+    <div>
+      <h3 class="text-2xl font-bold text-blue-600 mb-2">Achieve Your Goals</h3>
+      <p class="text-gray-600">Set financial goals and track your progress over time.</p>
+    </div>
+  </div>
+</section>
+
+<section class="text-center py-8 bg-gray-50">
+  <h2 class="text-3xl font-bold text-gray-800 mb-6">Start Today!</h2>
+  <a href="{{ url_for('auth.register') }}"
+     class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded">
+    Create an Account
+  </a>
+</section>
+
 {% endblock %}

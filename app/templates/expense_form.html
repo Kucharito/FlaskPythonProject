@@ -10,18 +10,22 @@
     {{ form.hidden_tag() }}
         <div class="mb-4">
             {{ form.amount.label(class="block font-medium mb-1") }}<br>
+            <p class="text-sm text-gray-500 mt-1">Enter a number.</p>
             {{ form.amount(class="border border-gray-300 rounded w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500") }}
         </div>
         <div class="mb-4">
-            {{ form.category.label(class="block font-medium mb-1") }}<br>
+            {{ form.category.label(class="block font-medium mb-1")}}<br>
+            <p class="text-sm text-gray-500 mt-1">Enter a name of category</p>
             {{ form.category(class="border border-gray-300 rounded w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500") }}
         </div>
         <div class="mb-4">
             {{ form.description.label(class="block font-medium mb-1") }}<br>
+            <p class="text-sm text-gray-500 mt-1">Enter a description (optional)</p>
             {{ form.description(class="border border-gray-300 rounded w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500") }}
         </div>
         <div class="mb-4">
             {{ form.date.label(class="block font-medium mb-1") }}<br>
+            <p class="text-sm text-gray-500 mt-1">Select a date</p>
             {{ form.date(type="date", class="border border-gray-300 rounded w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500") }}
         </div>
 
