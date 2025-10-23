@@ -56,6 +56,9 @@
     </tbody>
 </table>
 
+<h3 class="text-xl font-semibold mt-10 mb-4">Expense Summary by Category</h3>
+<canvas id="expensesChart" class="w-full max-w-lg max-auto"></canvas>
+
 <div class="mt-6">
     <a href="{{ url_for('expenses.add_expenses') }}"
        class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
@@ -73,5 +76,39 @@
 </div>
 
 {% endif %}
+<script>
+    fetch("{{url_for('expenses.chart_data')}}")
+    .then(response => response.json())
+        .then(data=> {
+            const ctx = document.getElementById('expensesChart').getContext('2d');
+            const labels = Object.keys(data);
+            const amounts = Object.values(data);
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Total Expenses by Category',
+                        data: amounts,
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            })
+        })
+
+
+</script>
+
+
 
 {% endblock %}

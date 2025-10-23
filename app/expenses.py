@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, jsonify
 
 from flask import Blueprint, render_template, flash, redirect, url_for
 from flask_login import login_required, current_user
@@ -80,3 +80,19 @@ def edit_expense(expense_id):
         flash('Expense updated successfully.', 'success')
         return redirect(url_for('expenses.list_expenses'))
     return render_template('expense_form.html', form=form, edit_mode=True)
+
+
+@expenses_bp.route('/chart-data')
+@login_required
+def chart_data():
+    data = db.session.query(
+        Expense.category,
+        db.func.sum(Expense.amount)
+    ).filter(
+        Expense.user_id == current_user.id
+    ).group_by(
+        Expense.category
+    ).all()
+
+    result = {category:float(total) for category, total in data}
+    return jsonify(result)
