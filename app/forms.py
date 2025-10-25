@@ -25,3 +25,9 @@ class ExpenseForm(FlaskForm):
     description = StringField('Description')
     date = DateField('Date', format='%Y-%m-%d', validators=[DataRequired()], default=date.today)
     submit = SubmitField('Add Expense')
+
+
+class BudgetForm(FlaskForm):
+    category = StringField('Category', validators=[DataRequired()])
+    limit = StringField('Limit', validators=[DataRequired()])
+    submit = SubmitField('Set Budget')

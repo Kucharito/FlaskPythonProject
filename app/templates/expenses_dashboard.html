@@ -56,8 +56,11 @@
     </tbody>
 </table>
 
-<h3 class="text-xl font-semibold mt-10 mb-4">Expense Summary by Category</h3>
-<canvas id="expensesChart" class="w-full max-w-lg max-auto"></canvas>
+<h3 class="text-xl font-semibold mt-10 mb-4 text-center">Expense Summary by Category</h3>
+<div class="flex justify-center mb-10">
+    <canvas id="expensesChart" class="max-w-2xl w-full"></canvas>
+</div>
+
 
 <div class="mt-6">
     <a href="{{ url_for('expenses.add_expenses') }}"
@@ -76,6 +79,7 @@
 </div>
 
 {% endif %}
+
 <script>
     fetch("{{url_for('expenses.chart_data')}}")
     .then(response => response.json())

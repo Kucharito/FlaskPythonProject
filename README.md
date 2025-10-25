@@ -33,6 +33,16 @@ At the current stage, the core Flask setup is functional — the app runs succes
 
 ---
 
+## Screenshots UI 
+
+<p align="center">
+    <img src="screenshots/Screenshot_2.png" alt="" width="680">
+    <img src="screenshots/Screenshot_3.png" alt="" width="300">
+    <img src="screenshots/Screenshot_4.png" alt="" width="350">
+    <img src="screenshots/Screenshot_5.png" alt="" width="680">
+    <img src="screenshots/Screenshot_7.png" alt="" width="450">
+</p>
+
 
 ## 💾 Database
 

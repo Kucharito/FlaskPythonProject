@@ -5,6 +5,8 @@ from flask_wtf import CSRFProtect
 from dotenv import load_dotenv
 import os
 
+from app.budgets import budgets_bp
+
 db = SQLAlchemy()
 login_manager = LoginManager()
 csrf = CSRFProtect()
@@ -35,6 +37,7 @@ def create_app():
     from .expenses import expenses_bp
     app.register_blueprint(auth_bp)
     app.register_blueprint(expenses_bp)
+    app.register_blueprint(budgets_bp)
 
     @app.route('/')
     def index():

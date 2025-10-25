@@ -16,13 +16,14 @@
             Expense Tracker
         </div>
         <div class="space-x-4">
-            <a href="{{ url_for('index') }}" class="hover:underline">Home</a>
+            <a href="{{ url_for('index') }}" class="hover:underline"><b>Home</b></a>
             {% if current_user.is_authenticated %}
-                <a href="{{ url_for('expenses.list_expenses') }}" class="hover:underline">Dashboard</a>
-                <a href="{{ url_for('auth.logout') }}" class="hover:underline">Logout</a>
+                <a href="{{ url_for('expenses.list_expenses') }}" class="hover:underline"><b>Dashboard</b></a>
+                <a href="{{ url_for('budgets.list_budgets') }}" class="hover:underline"><b>Budgets</b></a>
+                <a href="{{ url_for('auth.logout') }}" class="hover:underline"><b>Logout</b></a>
             {% else %}
-                <a href="{{ url_for('auth.login') }}" class="hover:underline">Login</a>
-                <a href="{{ url_for('auth.register') }}" class="hover:underline">Register</a>
+                <a href="{{ url_for('auth.login') }}" class="hover:underline"><b>Login</b></a>
+                <a href="{{ url_for('auth.register') }}" class="hover:underline"><b>Register</b></a>
             {% endif %}
         </div>
     </nav>
